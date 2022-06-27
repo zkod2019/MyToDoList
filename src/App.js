@@ -1,8 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function Greeting(props) {
-  return <h1>Hello {props.name}</h1>
+  return <h1>Hello {props.name}</h1>;
 }
 
 function App() {
@@ -10,6 +10,15 @@ function App() {
     <main>
       <h1>Hello React!</h1>
       <Greeting name="Zaya" />
+      <form>
+        <input />
+        <select name="deadline" id="deadline">
+          <option value="daily">DAILY</option>
+          <option value="set">SET DATE</option>
+        </select>
+        <button>+</button>
+      </form>
+      <ul></ul>
     </main>
   );
 
