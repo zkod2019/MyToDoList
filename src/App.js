@@ -1,17 +1,24 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 
 function Greeting(props) {
   return <h1>Hello {props.name}</h1>;
 }
 
 function App() {
+  const [value, setValue] = useState("");
   return (
     <main>
       <h1>Hello React!</h1>
       <Greeting name="Zaya" />
       <form>
-        <input />
+        <input
+          value={value}
+          onChange={function (e) {
+            setValue(e.target.value);
+          }}
+        />
         <select name="deadline" id="deadline">
           <option value="daily">DAILY</option>
           <option value="set">SET DATE</option>
