@@ -8,11 +8,18 @@ function Greeting(props) {
 
 function App() {
   const [value, setValue] = useState("");
+  const [todos, setTodos] = useState([]);
   return (
     <main>
       <h1>Hello React!</h1>
       <Greeting name="Zaya" />
-      <form>
+      <form
+        onSubmit={function (e) {
+          e.preventDefault();
+          setTodos([...todos, { text: value }]);
+          setValue("");
+        }}
+      >
         <input
           value={value}
           onChange={function (e) {
@@ -25,7 +32,11 @@ function App() {
         </select>
         <button>+</button>
       </form>
-      <ul></ul>
+      <ul>
+        {todos.map(function (todo) {
+          return <li>{todo.text}</li>;
+        })}
+      </ul>
     </main>
   );
 
