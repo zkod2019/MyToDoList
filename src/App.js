@@ -16,7 +16,7 @@ function App() {
       <form
         onSubmit={function (e) {
           e.preventDefault();
-          setTodos([...todos, { text: value }]);
+          setTodos([...todos, { text: value, completed: false }]);
           setValue("");
         }}
       >
@@ -33,8 +33,21 @@ function App() {
         <button>+</button>
       </form>
       <ul>
-        {todos.map(function (todo) {
-          return <li>{todo.text}</li>;
+        {todos.map(function (todo, i) {
+          return (
+            <li key={i}>
+              <input
+                type="checkbox"
+                onChange={function () {
+                  const newTodos = [...todos];
+                  newTodos[i].completed = !newTodos[i].completed;
+                  setTodos(newTodos);
+                }}
+                defaultChecked={todo.completed}
+              />
+              {todo.text}
+            </li>
+          );
         })}
       </ul>
     </main>
